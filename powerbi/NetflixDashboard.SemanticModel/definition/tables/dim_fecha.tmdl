@@ -1,0 +1,64 @@
+table dim_fecha
+	lineageTag: 1fafbcc9-dc61-43ed-8169-62f939f2ea1f
+
+	column fecha_key
+		dataType: int64
+		lineageTag: 591a2ab0-baac-4084-973e-e36ddff0c741
+		summarizeBy: none
+		sourceColumn: fecha_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column fecha
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 4f3fe421-0605-4de6-ac7b-c93a03456253
+		summarizeBy: none
+		sourceColumn: fecha
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column anio
+		dataType: int64
+		lineageTag: c1930a8e-78e2-43ef-82e1-749c127ab397
+		summarizeBy: none
+		sourceColumn: anio
+
+		annotation SummarizationSetBy = Automatic
+
+	column trimestre
+		dataType: int64
+		lineageTag: 82d4a16e-3a0c-4052-b43b-6748951dbb49
+		summarizeBy: none
+		sourceColumn: trimestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes
+		dataType: int64
+		lineageTag: edbd7206-8703-4bbf-ad7f-f0d63185cd4e
+		summarizeBy: none
+		sourceColumn: mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column nombre_mes
+		dataType: string
+		lineageTag: 5168054a-b8ed-4a8e-b7ca-5260b7c0b28a
+		summarizeBy: none
+		sourceColumn: nombre_mes
+		sortByColumn: mes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_fecha = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("localhost:5434", "netflix_dw"),
+				    Vista = Origen{[Schema="dw",Item="dim_fecha"]}[Data]
+				in
+				    Vista
+
