@@ -1,0 +1,143 @@
+table fact_titulos
+	lineageTag: 39116236-930e-4fa7-bcb1-d1b1e5a5f801
+
+	measure 'Total Títulos' = COUNTROWS(fact_titulos)
+		formatString: #,0
+		lineageTag: a8d493ba-1e08-4784-8e3d-de266a17cd17
+
+	measure Películas = CALCULATE([Total Títulos], fact_titulos[tipo] = "Película")
+		formatString: #,0
+		lineageTag: ab2fa640-9704-4301-b048-b017f74b3be8
+
+	measure Series = CALCULATE([Total Títulos], fact_titulos[tipo] = "Serie")
+		formatString: #,0
+		lineageTag: 50f57ca0-dff9-421b-8f89-462642e5f861
+
+	measure '% Películas' = DIVIDE([Películas], [Total Títulos])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 1bd072a0-040e-4395-9190-35468d349838
+
+	measure 'Duración Prom' = AVERAGE(fact_titulos[duracion_min])
+		formatString: #,0.0
+		lineageTag: 2effc031-eecc-4e72-a159-e17d8a15c79c
+
+	measure 'Temporadas Prom' = AVERAGE(fact_titulos[temporadas])
+		formatString: #,0.0
+		lineageTag: bef9408b-986d-44e5-bab1-e114e8957d44
+
+	column show_id
+		dataType: string
+		lineageTag: ec1566e0-3f42-4eba-8691-50f9e2845349
+		summarizeBy: none
+		sourceColumn: show_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column titulo
+		dataType: string
+		lineageTag: 50fe5918-3b92-4332-ab22-d08b49ab6d8d
+		summarizeBy: none
+		sourceColumn: titulo
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo
+		dataType: string
+		lineageTag: 184adc2b-9717-4f3b-bb84-52a62f17fe87
+		summarizeBy: none
+		sourceColumn: tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column clasificacion
+		dataType: string
+		lineageTag: f884bd11-930c-44e7-9467-55ae1b909842
+		summarizeBy: none
+		sourceColumn: clasificacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column director
+		dataType: string
+		lineageTag: a70da501-ac0c-4a5c-9fec-4a5f7eca06a7
+		summarizeBy: none
+		sourceColumn: director
+
+		annotation SummarizationSetBy = Automatic
+
+	column anio_estreno
+		dataType: int64
+		lineageTag: d65a0808-8893-41a7-b42d-9bd9593df497
+		summarizeBy: none
+		sourceColumn: anio_estreno
+
+		annotation SummarizationSetBy = Automatic
+
+	column fecha_agregado
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 3b6bcc7f-88de-461f-9abe-e93e92c602d9
+		summarizeBy: none
+		sourceColumn: fecha_agregado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column fecha_key
+		dataType: int64
+		lineageTag: b27c87f8-0b60-4476-a42d-0f6d82d63c3d
+		summarizeBy: none
+		sourceColumn: fecha_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column duracion_min
+		dataType: int64
+		lineageTag: a45a7078-26ee-448e-a90d-2bdb838dfe67
+		summarizeBy: none
+		sourceColumn: duracion_min
+
+		annotation SummarizationSetBy = Automatic
+
+	column temporadas
+		dataType: int64
+		lineageTag: e6295498-2cd3-43e6-8702-b5f198d2e09c
+		summarizeBy: none
+		sourceColumn: temporadas
+
+		annotation SummarizationSetBy = Automatic
+
+	column anios_hasta_netflix
+		dataType: int64
+		lineageTag: 36693637-792b-48f1-a844-349eece338bf
+		summarizeBy: none
+		sourceColumn: anios_hasta_netflix
+
+		annotation SummarizationSetBy = Automatic
+
+	column descripcion
+		dataType: string
+		lineageTag: f93f6684-ca8c-4a80-8059-012615d861fc
+		summarizeBy: none
+		sourceColumn: descripcion
+
+		annotation SummarizationSetBy = Automatic
+
+	column cantidad
+		dataType: int64
+		lineageTag: e6898013-b265-4fe6-a51a-2cae8a7525d0
+		summarizeBy: none
+		sourceColumn: cantidad
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_titulos = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("localhost:5434", "netflix_dw"),
+				    Vista = Origen{[Schema="dw",Item="fact_titulos"]}[Data]
+				in
+				    Vista
+

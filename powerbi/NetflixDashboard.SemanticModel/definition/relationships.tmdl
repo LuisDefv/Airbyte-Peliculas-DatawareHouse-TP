@@ -1,0 +1,22 @@
+relationship b15fcb42-9caf-4732-9065-8bb911172b52
+	fromColumn: fact_titulos.fecha_key
+	toColumn: dim_fecha.fecha_key
+
+relationship 3a2a1886-65d6-433f-b325-89514fa057c8
+	crossFilteringBehavior: bothDirections
+	fromColumn: bridge_titulo_genero.show_id
+	toColumn: fact_titulos.show_id
+
+relationship 1c789f69-6876-4163-9358-46c2668b95a9
+	fromColumn: bridge_titulo_genero.genero
+	toColumn: dim_genero.genero
+
+relationship ac015e62-d135-456b-85c1-9724be4ecd50
+	crossFilteringBehavior: bothDirections
+	fromColumn: bridge_titulo_pais.show_id
+	toColumn: fact_titulos.show_id
+
+relationship 4f078968-ee40-49cd-9178-046456383b60
+	fromColumn: bridge_titulo_pais.pais
+	toColumn: dim_pais.pais
+

@@ -1,0 +1,20 @@
+table dim_pais
+	lineageTag: 1e56093a-b3a6-473d-9f08-620aa98c1b6d
+
+	column pais
+		dataType: string
+		lineageTag: e03c7154-2b4a-4dba-ba76-46ef1e27a61b
+		summarizeBy: none
+		sourceColumn: pais
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_pais = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("localhost:5434", "netflix_dw"),
+				    Vista = Origen{[Schema="dw",Item="dim_pais"]}[Data]
+				in
+				    Vista
+

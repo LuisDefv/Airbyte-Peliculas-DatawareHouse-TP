@@ -1,0 +1,100 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 334.19810655769857,
+            "y": 72.109081517982531
+          },
+          "nodeIndex": "bridge_titulo_genero",
+          "nodeLineageTag": "5ca4f0fe-2564-4078-a431-20e9de5b493f",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1193.9611581438269,
+            "y": 345.88663920729516
+          },
+          "nodeIndex": "bridge_titulo_pais",
+          "nodeLineageTag": "359f4e99-cce8-4743-88bb-44ac16cfe085",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 899.15484469186549,
+            "y": 495.86538679163709
+          },
+          "nodeIndex": "dim_fecha",
+          "nodeLineageTag": "1fafbcc9-dc61-43ed-8169-62f939f2ea1f",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": -50
+          },
+          "nodeIndex": "dim_genero",
+          "nodeLineageTag": "7d227a5a-4a5d-4d99-8ae3-4f74cbfbd49d",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 618.90413120680853,
+            "y": 66.082219798529081
+          },
+          "nodeIndex": "dim_pais",
+          "nodeLineageTag": "1e56093a-b3a6-473d-9f08-620aa98c1b6d",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 905.04041666756359,
+            "y": 139.37723530187873
+          },
+          "nodeIndex": "fact_titulos",
+          "nodeLineageTag": "39116236-930e-4fa7-bcb1-d1b1e5a5f801",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}
