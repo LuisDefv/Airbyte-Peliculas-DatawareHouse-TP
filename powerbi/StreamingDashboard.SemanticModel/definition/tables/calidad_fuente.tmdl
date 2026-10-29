@@ -1,0 +1,59 @@
+table calidad_fuente
+	lineageTag: 8b8927a1-cead-452c-8723-9b72e7b88454
+
+	column plataforma
+		dataType: string
+		lineageTag: 6bd00c95-f046-4a92-8c41-bdd6dd6117c7
+		summarizeBy: none
+		sourceColumn: plataforma
+
+		annotation SummarizationSetBy = Automatic
+
+	column titulos
+		dataType: int64
+		lineageTag: 1bca5bc9-0c3a-425c-974e-6eb01da3ea88
+		summarizeBy: none
+		sourceColumn: titulos
+
+		annotation SummarizationSetBy = Automatic
+
+	column pct_sin_fecha_alta
+		dataType: double
+		lineageTag: 534d2bb3-d5d7-45df-bf0f-32b36df723df
+		summarizeBy: none
+		sourceColumn: pct_sin_fecha_alta
+
+		annotation SummarizationSetBy = Automatic
+
+	column pct_sin_pais
+		dataType: double
+		lineageTag: 70e853bc-dfcf-41de-8018-cc0a8a3b4937
+		summarizeBy: none
+		sourceColumn: pct_sin_pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column pct_sin_director
+		dataType: double
+		lineageTag: d4427e2a-f536-42ee-b3bb-7fbb7c0aff74
+		summarizeBy: none
+		sourceColumn: pct_sin_director
+
+		annotation SummarizationSetBy = Automatic
+
+	column pct_sin_clasificacion
+		dataType: double
+		lineageTag: b9e0347f-d4ae-421c-b297-647fcb681b09
+		summarizeBy: none
+		sourceColumn: pct_sin_clasificacion
+
+		annotation SummarizationSetBy = Automatic
+
+	partition calidad_fuente = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("localhost:5434", "netflix_dw"),
+				    Vista = Origen{[Schema="mart",Item="calidad_fuente"]}[Data]
+				in
+				    Vista

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "barEdad",
+  "position": {
+    "x": 20,
+    "y": 448,
+    "z": 4000,
+    "height": 262,
+    "width": 600,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "hundredPercentStackedBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_plataforma"
+                    }
+                  },
+                  "Property": "plataforma"
+                }
+              },
+              "queryRef": "dim_plataforma.plataforma",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_clasificacion"
+                    }
+                  },
+                  "Property": "grupo_edad"
+                }
+              },
+              "queryRef": "dim_clasificacion.grupo_edad"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_titulo"
+                    }
+                  },
+                  "Property": "Total Títulos"
+                }
+              },
+              "queryRef": "fact_titulo.Total Títulos"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Público objetivo (clasificación homologada)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

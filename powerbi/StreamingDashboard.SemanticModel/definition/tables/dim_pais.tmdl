@@ -1,0 +1,19 @@
+table dim_pais
+	lineageTag: 1ca7597c-beb5-4892-9643-c2c2098ea4de
+
+	column pais
+		dataType: string
+		lineageTag: 2f70708a-f739-4f8b-9047-f054abade988
+		summarizeBy: none
+		sourceColumn: pais
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_pais = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("localhost:5434", "netflix_dw"),
+				    Vista = Origen{[Schema="mart",Item="dim_pais"]}[Data]
+				in
+				    Vista

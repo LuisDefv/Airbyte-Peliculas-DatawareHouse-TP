@@ -1,0 +1,35 @@
+table dim_anio
+	lineageTag: 9bdae3ca-c864-43f0-b8bd-1c7c3f6de9a4
+
+	column anio
+		dataType: int64
+		lineageTag: a9838794-2b91-4f4c-8c11-a736e41e1ad8
+		summarizeBy: none
+		sourceColumn: anio
+
+		annotation SummarizationSetBy = Automatic
+
+	column decada
+		dataType: string
+		lineageTag: 494bc222-f6e9-4479-a13b-8e0a09d46c87
+		summarizeBy: none
+		sourceColumn: decada
+
+		annotation SummarizationSetBy = Automatic
+
+	column periodo
+		dataType: string
+		lineageTag: 997d289d-e175-4567-b870-405d635eb894
+		summarizeBy: none
+		sourceColumn: periodo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_anio = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("localhost:5434", "netflix_dw"),
+				    Vista = Origen{[Schema="mart",Item="dim_anio"]}[Data]
+				in
+				    Vista

@@ -1,0 +1,29 @@
+relationship 374d6dcd-f7ab-48b5-8660-92aacad462ae
+	fromColumn: fact_titulo.plataforma_id
+	toColumn: dim_plataforma.plataforma_id
+
+relationship 989ecc1b-b627-4a64-b46f-fbb61a8f8cff
+	fromColumn: fact_titulo.grupo_edad
+	toColumn: dim_clasificacion.grupo_edad
+
+relationship dd74b4c4-89cd-47cb-9540-8bf4f8ff7d59
+	fromColumn: fact_titulo.anio_estreno
+	toColumn: dim_anio.anio
+
+relationship 83e6bf7a-c2cd-4318-a8ac-91d7d0a92bbf
+	crossFilteringBehavior: bothDirections
+	fromColumn: bridge_titulo_genero.titulo_id
+	toColumn: fact_titulo.titulo_id
+
+relationship 762a392e-b0bd-46f9-abe7-cbfd37ea096b
+	fromColumn: bridge_titulo_genero.genero
+	toColumn: dim_genero.genero
+
+relationship 69dde8e9-558d-4c71-9811-98eacd02bd17
+	crossFilteringBehavior: bothDirections
+	fromColumn: bridge_titulo_pais.titulo_id
+	toColumn: fact_titulo.titulo_id
+
+relationship 2cf63ec5-78f1-4d84-8de9-9cffb366c298
+	fromColumn: bridge_titulo_pais.pais
+	toColumn: dim_pais.pais

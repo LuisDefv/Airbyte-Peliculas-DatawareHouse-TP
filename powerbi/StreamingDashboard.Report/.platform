@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "StreamingDashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6d0f9184-f3ef-48ba-9553-152b4242d05a"
+  }
+}
