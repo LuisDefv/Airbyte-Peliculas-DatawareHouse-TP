@@ -1,0 +1,124 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "tablaCalidad",
+  "position": {
+    "x": 590,
+    "y": 418,
+    "z": 4000,
+    "height": 292,
+    "width": 670,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "calidad_fuente"
+                    }
+                  },
+                  "Property": "plataforma"
+                }
+              },
+              "queryRef": "calidad_fuente.plataforma"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "calidad_fuente"
+                    }
+                  },
+                  "Property": "titulos"
+                }
+              },
+              "queryRef": "calidad_fuente.titulos"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "calidad_fuente"
+                    }
+                  },
+                  "Property": "pct_sin_fecha_alta"
+                }
+              },
+              "queryRef": "calidad_fuente.pct_sin_fecha_alta"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "calidad_fuente"
+                    }
+                  },
+                  "Property": "pct_sin_pais"
+                }
+              },
+              "queryRef": "calidad_fuente.pct_sin_pais"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "calidad_fuente"
+                    }
+                  },
+                  "Property": "pct_sin_director"
+                }
+              },
+              "queryRef": "calidad_fuente.pct_sin_director"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "calidad_fuente"
+                    }
+                  },
+                  "Property": "pct_sin_clasificacion"
+                }
+              },
+              "queryRef": "calidad_fuente.pct_sin_clasificacion"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Calidad de datos por fuente (% de títulos sin el dato)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

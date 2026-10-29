@@ -1,0 +1,28 @@
+table dim_clasificacion
+	lineageTag: 7f3612fb-d31d-420b-a857-5ecadc095e35
+
+	column grupo_edad
+		dataType: string
+		lineageTag: ccdda28f-6b29-4c06-88ce-dcf893c21ffd
+		summarizeBy: none
+		sourceColumn: grupo_edad
+		sortByColumn: orden_grupo
+
+		annotation SummarizationSetBy = Automatic
+
+	column orden_grupo
+		dataType: int64
+		lineageTag: 9c7baf81-30bb-4524-a1a7-a045bec0dd81
+		summarizeBy: none
+		sourceColumn: orden_grupo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_clasificacion = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("localhost:5434", "netflix_dw"),
+				    Vista = Origen{[Schema="mart",Item="dim_clasificacion"]}[Data]
+				in
+				    Vista

@@ -1,0 +1,23 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-ES
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["fact_titulo", "dim_plataforma", "dim_clasificacion", "dim_anio", "dim_genero", "bridge_titulo_genero", "dim_pais", "bridge_titulo_pais", "calidad_fuente"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table fact_titulo
+ref table dim_plataforma
+ref table dim_clasificacion
+ref table dim_anio
+ref table dim_genero
+ref table bridge_titulo_genero
+ref table dim_pais
+ref table bridge_titulo_pais
+ref table calidad_fuente

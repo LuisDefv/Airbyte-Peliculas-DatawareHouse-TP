@@ -1,0 +1,35 @@
+table dim_plataforma
+	lineageTag: f8b5ba3d-c040-4846-90bb-ec46d8297822
+
+	column plataforma_id
+		dataType: int64
+		lineageTag: 33a8fd7b-22db-4f42-9fbe-ceb18acb23a2
+		summarizeBy: none
+		sourceColumn: plataforma_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column plataforma
+		dataType: string
+		lineageTag: 07b89e80-b1e8-4d27-8f0b-1adbd719c846
+		summarizeBy: none
+		sourceColumn: plataforma
+
+		annotation SummarizationSetBy = Automatic
+
+	column empresa
+		dataType: string
+		lineageTag: 2922ce6e-644b-40d5-a3a6-0e804ae827ef
+		summarizeBy: none
+		sourceColumn: empresa
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_plataforma = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("localhost:5434", "netflix_dw"),
+				    Vista = Origen{[Schema="mart",Item="dim_plataforma"]}[Data]
+				in
+				    Vista

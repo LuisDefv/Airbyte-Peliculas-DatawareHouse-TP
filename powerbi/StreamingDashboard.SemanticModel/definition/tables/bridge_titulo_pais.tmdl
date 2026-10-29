@@ -1,0 +1,27 @@
+table bridge_titulo_pais
+	lineageTag: 6a572b25-5816-4bd5-bfce-de2d8e4fbab1
+
+	column titulo_id
+		dataType: int64
+		lineageTag: 8ebff74e-49f8-4855-8abc-048410e6aa55
+		summarizeBy: none
+		sourceColumn: titulo_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pais
+		dataType: string
+		lineageTag: 230b5afe-a434-4e56-ab1b-e0d9ae3ffe05
+		summarizeBy: none
+		sourceColumn: pais
+
+		annotation SummarizationSetBy = Automatic
+
+	partition bridge_titulo_pais = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("localhost:5434", "netflix_dw"),
+				    Vista = Origen{[Schema="mart",Item="bridge_titulo_pais"]}[Data]
+				in
+				    Vista

@@ -1,0 +1,19 @@
+table dim_genero
+	lineageTag: af0923fb-5b0d-4fd2-a23e-8cf0ab048651
+
+	column genero
+		dataType: string
+		lineageTag: 15e3b63f-b28b-4daf-811d-aea404d6af9d
+		summarizeBy: none
+		sourceColumn: genero
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_genero = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("localhost:5434", "netflix_dw"),
+				    Vista = Origen{[Schema="mart",Item="dim_genero"]}[Data]
+				in
+				    Vista
